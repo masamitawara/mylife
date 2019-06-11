@@ -11,4 +11,9 @@ class foodController extends Controller
     {
         return view('admin.food.create');
     }
+    public function create(Request $request)
+  {
+      // admin/food/createにリダイレクトする
+      return redirect('admin/food/create');
+  }  
 }

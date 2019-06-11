@@ -13,9 +13,13 @@
 
 Route::get('/', function () {
     return view('welcome');
-    
 });
 
-    Route::group(['prefix' => 'admin'], function() {
+    Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
         Route::get('food/create','Admin\foodController@add');
+        Route::post('food/create','Admin\foodController@create');
     });
+    
+Auth::routes();
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
